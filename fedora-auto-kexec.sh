@@ -25,7 +25,8 @@ if [ -z "$current_cmdline" ]; then
 fi
 
 echo "Rebooting to $current_boot with $current_initrd and $current_cmdline"
+echo "kexec -l $current_boot $current_initrd --command-line="$current_cmdline""
 
-kexec -l $current_boot $current_initrd --append="$current_cmdline"
+kexec -l $current_boot $current_initrd --reuse-cmdline
 kexec -e
 
